@@ -1,11 +1,17 @@
-exports.money = function (value, currency) {
-  if (typeof (value) === 'string') {
-    let num = currency + value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+const san = require('san-money')
 
-    return num
-  }
-  if (typeof (value) === 'number') {
-    let num = currency + value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-    return num
-  }
-}
+const dollar = "USD. "
+const rupiah = "Rp. "
+const singDollar = "SGD. "
+const num = 100000
+const str = "2000"
+
+
+
+console.log("Number in U.S Dollar : ",san.money(num, dollar))
+console.log("Number in Rupiah",san.money(num, rupiah))
+console.log("Number in Singapore Dollar",san.money(num, singDollar))
+
+console.log("String in U.S Dollar :",san.money(str, dollar))
+console.log("String in U.S Dollar :",san.money(str, rupiah))
+console.log("String in U.S Dollar :",san.money(str, singDollar))
